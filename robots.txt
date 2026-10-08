@@ -1,2 +1,6 @@
+# From Tue 20 Oct 2026: only the home page and the OneHand waitlist + privacy pages may be crawled.
 User-agent: *
+Allow: /$
+Allow: /onehand/$
+Allow: /onehand/privacy.html$
 Disallow: /

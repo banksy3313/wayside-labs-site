@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
   <title>OneHand — join the waitlist | Wayside Labs</title>
   <style>
     :root {
@@ -96,6 +95,8 @@
     .wl-form .consent input { margin-top: 0.3rem; }
     .wl-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
     .btn-live { border: 0; font: inherit; font-weight: 700; }
+    .wl-status.ok { color: #1F7A4D; font-weight: 700; }
+    .wl-status.err { color: #B23B22; font-weight: 700; }
     .btn-live:not([disabled]) { background: var(--coral); cursor: pointer; opacity: 1; }
   </style>
 </head>
@@ -124,11 +125,13 @@
         Launch is aimed at <strong>Monday 1 February 2027</strong>. Leave your email and we’ll tell you when TestFlight / closed testing and the store links are ready.
       </p>
       <!-- WAITLIST FORM (go-live Tue 20 Oct 2026).
-           Before merging: set data-endpoint to the real HTTPS endpoint (e.g. the Make.com webhook URL).
+           Before merging: set data-endpoint to the Make.com custom webhook URL (https://hook.eu*.make.com/...).
+           Payload: JSON body sent as Content-Type text/plain (a CORS "simple request", so no preflight).
+           If you change the consent wording below, bump CONSENT_VERSION in the script.
            HTTPS gate: the form stays disabled unless the page itself is served over https:// AND the
            endpoint is https://. Keep this gate; do not remove it to work around a missing certificate. -->
       <form id="waitlist-form" class="wl-form" method="post" novalidate
-            data-endpoint="" data-list="onehand-waitlist">
+            data-endpoint="">
         <label for="wl-email">Email address</label>
         <input id="wl-email" name="email" type="email" autocomplete="email" required disabled />
         <label for="wl-name">First name <span class="opt">(optional)</span></label>
@@ -139,10 +142,10 @@
         </div>
         <label class="consent">
           <input id="wl-consent" name="consent" type="checkbox" value="yes" required disabled />
-          <span>Email me about OneHand testing and launch. I can unsubscribe at any time. See the <a href="privacy.html">privacy notice</a> for how Wayside Labs uses my email.</span>
+          <span id="wl-consent-text">Email me about OneHand testing and launch. I can unsubscribe at any time. See the <a href="privacy.html">privacy notice</a> for how Wayside Labs uses my email.</span>
         </label>
         <button id="wl-submit" class="btn btn-live" type="submit" disabled>Join the waitlist</button>
-        <p id="wl-status" class="note" role="status" aria-live="polite">Sign-up opens shortly. It switches on once this page is on a secure (https) connection.</p>
+        <p id="wl-status" class="note wl-status" role="status" aria-live="polite">Sign-up opens shortly. It switches on once this page is on a secure (https) connection.</p>
       </form>
       <noscript><p class="note">Please turn on JavaScript to join the waitlist.</p></noscript>
     </section>
@@ -154,38 +157,64 @@
   </main>
   <script>
   (function () {
+    // Bump this whenever the consent wording (#wl-consent-text) changes.
+    var CONSENT_VERSION = 'onehand-waitlist-v1-2026-10-08';
+    var APP = 'onehand';
+
     var form = document.getElementById('waitlist-form');
     var status = document.getElementById('wl-status');
+    var btn = document.getElementById('wl-submit');
     var endpoint = (form.getAttribute('data-endpoint') || '').trim();
+
+    function say(msg, kind) {
+      status.textContent = msg;
+      status.className = 'note wl-status' + (kind ? ' ' + kind : '');
+    }
+
     // HTTPS gate: page and endpoint must both be https, or the form stays off.
     var secure = window.location.protocol === 'https:' && /^https:\/\//i.test(endpoint);
     if (!secure) { return; }
     Array.prototype.forEach.call(form.querySelectorAll('input, button'), function (el) { el.disabled = false; });
-    status.textContent = '';
+    say('');
+
+    var params = new URLSearchParams(window.location.search);
+    function utm(name) { return (params.get(name) || '').trim().slice(0, 100); }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var email = form.email.value.trim();
-      if (!email || !form.email.checkValidity()) { status.textContent = 'Please enter a valid email address.'; form.email.focus(); return; }
-      if (!form.consent.checked) { status.textContent = 'Please tick the box to agree to waitlist emails.'; form.consent.focus(); return; }
-      if (form.website.value) { status.textContent = 'Thanks, you’re on the list.'; form.reset(); return; }
-      var body = new URLSearchParams({
+      if (!email || !form.email.checkValidity()) { say('Please enter a valid email address.', 'err'); form.email.focus(); return; }
+      if (!form.consent.checked) { say('Please tick the box to agree to waitlist emails.', 'err'); form.consent.focus(); return; }
+      // Spam trap filled: drop silently, but look successful to the bot.
+      if (form.website.value) { say('Thanks, you’re on the list.', 'ok'); form.reset(); return; }
+
+      var utmSource = utm('utm_source');
+      var payload = {
         email: email,
         first_name: form.first_name.value.trim(),
-        consent: 'yes',
-        consent_text: form.querySelector('.consent span').textContent.trim(),
-        list: form.getAttribute('data-list'),
-        page: window.location.href,
+        app: APP,
+        source: utmSource || document.referrer || 'direct',
+        utm_source: utmSource,
+        utm_medium: utm('utm_medium'),
+        utm_campaign: utm('utm_campaign'),
+        consent: true,
+        consent_version: CONSENT_VERSION,
+        page_url: window.location.href,
         submitted_at: new Date().toISOString()
-      });
-      var btn = document.getElementById('wl-submit');
-      btn.disabled = true; status.textContent = 'Sending…';
-      fetch(endpoint, { method: 'POST', body: body })
+      };
+
+      btn.disabled = true; say('Sending…');
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        body: JSON.stringify(payload)
+      })
         .then(function (r) {
           if (!r.ok) { throw new Error('HTTP ' + r.status); }
-          status.textContent = 'Thanks, you’re on the list. Check your inbox for a welcome email.';
+          say('Thanks, you’re on the list. We’ll email you when testing opens.', 'ok');
           form.reset();
         })
-        .catch(function () { status.textContent = 'Sorry, that didn’t go through. Please try again in a minute.'; })
+        .catch(function () { say('Sorry, that didn’t go through. Please try again in a minute.', 'err'); })
         .then(function () { btn.disabled = false; });
     });
   })();
