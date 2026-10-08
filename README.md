@@ -2,8 +2,8 @@
 
 Public waitlist and app pages for [waysidelabs.co.uk](https://waysidelabs.co.uk).
 
-- OneHand: `/onehand/` (form held until ICO registration is clear)
+- Thumblog (formerly OneHand): `/thumblog/` (waitlist form; switches on only over HTTPS with a configured `data-endpoint`). `/onehand/` and `/onehand/privacy.html` are noindex redirects to it.
 - Nourish Weekly: `/nourish-weekly/` (privacy, terms and support)
 - Custom domain: waysidelabs.co.uk via GitHub Pages. DNS must point the apex domain at GitHub Pages (see team `HOSTING.md`).
 
-Built by WAYDEV. No email collection until CAFO clears ICO.
+Built by WAYDEV.
