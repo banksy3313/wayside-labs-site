@@ -1,6 +1,7 @@
-# From Tue 20 Oct 2026: only the home page and the OneHand waitlist + privacy pages may be crawled.
+# From Tue 20 Oct 2026: only the home page and the Thumblog waitlist + privacy pages may be crawled.
+# /onehand/ is a noindex redirect to /thumblog/ (OneHand was renamed Thumblog on 8 Oct 2026).
 User-agent: *
 Allow: /$
-Allow: /onehand/$
-Allow: /onehand/privacy.html$
+Allow: /thumblog/$
+Allow: /thumblog/privacy.html$
 Disallow: /

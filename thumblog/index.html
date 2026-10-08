@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thumblog: one-handed baby log — join the waitlist | Wayside Labs</title>
+  <meta name="description" content="Thumblog: one-handed baby log. Log feeds, sleep and nappies with one hand. Join the waitlist." />
+  <link rel="canonical" href="https://waysidelabs.co.uk/thumblog/" />
+  <style>
+    :root {
+      --navy: #1F2A44;
+      --body: #2D3748;
+      --brand: #3B5B8C;
+      --panel: #F3F5F8;
+      --muted: #5B6778;
+      --border: #DDE3EA;
+      --coral: #D9674E;
+      --white: #FFFFFF;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Calibri, Carlito, "Segoe UI", system-ui, sans-serif;
+      color: var(--body);
+      background: var(--white);
+      line-height: 1.5;
+    }
+    .top { height: 4px; background: var(--brand); }
+    .wrap { max-width: 640px; margin: 0 auto; padding: 2.5rem 1.25rem 3rem; }
+    .kicker {
+      color: var(--brand);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 0.5rem;
+    }
+    h1 {
+      color: var(--navy);
+      font-size: 2rem;
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+    }
+    .lead { font-size: 1.125rem; margin: 0 0 1.5rem; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.35rem;
+      margin: 0 0 1.5rem;
+    }
+    .card h2 {
+      color: var(--navy);
+      font-size: 1.05rem;
+      margin: 0 0 0.75rem;
+    }
+    ul { margin: 0; padding-left: 1.15rem; }
+    li { margin: 0.35rem 0; }
+    .cta-box {
+      border: 1px dashed var(--brand);
+      border-radius: 10px;
+      padding: 1.25rem 1.35rem;
+      margin: 0 0 1.5rem;
+      background: #f8fafc;
+    }
+    .cta-box p { margin: 0 0 0.75rem; }
+    .btn {
+      display: inline-block;
+      background: var(--muted);
+      color: var(--white);
+      padding: 0.7rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: not-allowed;
+      opacity: 0.85;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0.5rem 0 0;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--brand); }
+    .wl-form label { display: block; font-weight: 700; color: var(--navy); margin: 0.6rem 0 0.25rem; }
+    .wl-form .opt { font-weight: 400; color: var(--muted); }
+    .wl-form input[type=email], .wl-form input[type=text] {
+      width: 100%; padding: 0.6rem 0.7rem; font: inherit;
+      border: 1px solid var(--border); border-radius: 8px; background: var(--white);
+    }
+    .wl-form .consent { display: flex; gap: 0.5rem; align-items: flex-start; font-weight: 400; color: var(--body); margin: 0.9rem 0; }
+    .wl-form .consent input { margin-top: 0.3rem; }
+    .wl-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .btn-live { border: 0; font: inherit; font-weight: 700; }
+    .wl-status.ok { color: #1F7A4D; font-weight: 700; }
+    .wl-status.err { color: #B23B22; font-weight: 700; }
+    .btn-live:not([disabled]) { background: var(--coral); cursor: pointer; opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="top" aria-hidden="true"></div>
+  <main class="wrap">
+    <p class="kicker">Wayside Labs · Thumblog</p>
+    <h1>Log feeds, sleep and nappies with one hand</h1>
+    <p class="lead">
+      Thumblog is a fast, one-handed baby log for nights and busy days — built for UK parents who need the essentials without digging through menus.
+    </p>
+
+    <section class="card" aria-labelledby="features">
+      <h2 id="features">What you get at launch</h2>
+      <ul>
+        <li>One-tap feed, sleep and nappy logging</li>
+        <li>A clear “since you left” summary for partners</li>
+        <li>Night-friendly layout</li>
+        <li>Free for the basics; Family unlock when you need more history and sharing</li>
+      </ul>
+    </section>
+
+    <section class="cta-box" aria-labelledby="waitlist">
+      <h2 id="waitlist" class="kicker" style="margin-bottom:0.4rem">Waitlist</h2>
+      <p>
+        Launch is aimed at <strong>Monday 1 February 2027</strong>. Leave your email and we’ll tell you when TestFlight / closed testing and the store links are ready.
+      </p>
+      <!-- WAITLIST FORM (go-live Tue 20 Oct 2026).
+           Before merging: set data-endpoint to the Make.com custom webhook URL (https://hook.eu*.make.com/...).
+           Payload: JSON body sent as Content-Type text/plain (a CORS "simple request", so no preflight).
+           If you change the consent wording below, bump CONSENT_VERSION in the script.
+           HTTPS gate: the form stays disabled unless the page itself is served over https:// AND the
+           endpoint is https://. Keep this gate; do not remove it to work around a missing certificate. -->
+      <form id="waitlist-form" class="wl-form" method="post" novalidate
+            data-endpoint="">
+        <label for="wl-email">Email address</label>
+        <input id="wl-email" name="email" type="email" autocomplete="email" required disabled />
+        <label for="wl-name">First name <span class="opt">(optional)</span></label>
+        <input id="wl-name" name="first_name" type="text" autocomplete="given-name" maxlength="60" disabled />
+        <div class="hp" aria-hidden="true">
+          <label for="wl-website">Leave this empty</label>
+          <input id="wl-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <label class="consent">
+          <input id="wl-consent" name="consent" type="checkbox" value="yes" required disabled />
+          <span id="wl-consent-text">Email me about Thumblog testing and launch. I can unsubscribe at any time. See the <a href="privacy.html">privacy notice</a> for how Wayside Labs uses my email.</span>
+        </label>
+        <button id="wl-submit" class="btn btn-live" type="submit" disabled>Join the waitlist</button>
+        <p id="wl-status" class="note wl-status" role="status" aria-live="polite">Sign-up opens shortly. It switches on once this page is on a secure (https) connection.</p>
+      </form>
+      <noscript><p class="note">Please turn on JavaScript to join the waitlist.</p></noscript>
+    </section>
+
+    <footer>
+      <p>Wayside Labs · waysidelabs.co.uk/thumblog</p>
+      <p><a href="privacy.html">Privacy notice</a></p>
+    </footer>
+  </main>
+  <script>
+  (function () {
+    // Bump this whenever the consent wording (#wl-consent-text) changes.
+    var CONSENT_VERSION = 'thumblog-waitlist-v1-2026-10-08';
+    var APP = 'thumblog';
+
+    var form = document.getElementById('waitlist-form');
+    var status = document.getElementById('wl-status');
+    var btn = document.getElementById('wl-submit');
+    var endpoint = (form.getAttribute('data-endpoint') || '').trim();
+
+    function say(msg, kind) {
+      status.textContent = msg;
+      status.className = 'note wl-status' + (kind ? ' ' + kind : '');
+    }
+
+    // HTTPS gate: page and endpoint must both be https, or the form stays off.
+    var secure = window.location.protocol === 'https:' && /^https:\/\//i.test(endpoint);
+    if (!secure) { return; }
+    Array.prototype.forEach.call(form.querySelectorAll('input, button'), function (el) { el.disabled = false; });
+    say('');
+
+    var params = new URLSearchParams(window.location.search);
+    function utm(name) { return (params.get(name) || '').trim().slice(0, 100); }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.email.value.trim();
+      if (!email || !form.email.checkValidity()) { say('Please enter a valid email address.', 'err'); form.email.focus(); return; }
+      if (!form.consent.checked) { say('Please tick the box to agree to waitlist emails.', 'err'); form.consent.focus(); return; }
+      // Spam trap filled: drop silently, but look successful to the bot.
+      if (form.website.value) { say('Thanks, you’re on the list.', 'ok'); form.reset(); return; }
+
+      var utmSource = utm('utm_source');
+      var payload = {
+        email: email,
+        first_name: form.first_name.value.trim(),
+        app: APP,
+        source: utmSource || document.referrer || 'direct',
+        utm_source: utmSource,
+        utm_medium: utm('utm_medium'),
+        utm_campaign: utm('utm_campaign'),
+        consent: true,
+        consent_version: CONSENT_VERSION,
+        page_url: window.location.href,
+        submitted_at: new Date().toISOString()
+      };
+
+      btn.disabled = true; say('Sending…');
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (r) {
+          if (!r.ok) { throw new Error('HTTP ' + r.status); }
+          say('Thanks, you’re on the list. We’ll email you when testing opens.', 'ok');
+          form.reset();
+        })
+        .catch(function () { say('Sorry, that didn’t go through. Please try again in a minute.', 'err'); })
+        .then(function () { btn.disabled = false; });
+    });
+  })();
+  </script>
+</body>
+</html>
