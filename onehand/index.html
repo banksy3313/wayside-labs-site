@@ -86,6 +86,17 @@
       color: var(--muted);
     }
     footer a { color: var(--brand); }
+    .wl-form label { display: block; font-weight: 700; color: var(--navy); margin: 0.6rem 0 0.25rem; }
+    .wl-form .opt { font-weight: 400; color: var(--muted); }
+    .wl-form input[type=email], .wl-form input[type=text] {
+      width: 100%; padding: 0.6rem 0.7rem; font: inherit;
+      border: 1px solid var(--border); border-radius: 8px; background: var(--white);
+    }
+    .wl-form .consent { display: flex; gap: 0.5rem; align-items: flex-start; font-weight: 400; color: var(--body); margin: 0.9rem 0; }
+    .wl-form .consent input { margin-top: 0.3rem; }
+    .wl-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .btn-live { border: 0; font: inherit; font-weight: 700; }
+    .btn-live:not([disabled]) { background: var(--coral); cursor: pointer; opacity: 1; }
   </style>
 </head>
 <body>
@@ -110,19 +121,74 @@
     <section class="cta-box" aria-labelledby="waitlist">
       <h2 id="waitlist" class="kicker" style="margin-bottom:0.4rem">Waitlist</h2>
       <p>
-        Launch is aimed at <strong>Monday 1 February 2027</strong>. Leave your email when we open the list and we’ll tell you when TestFlight / closed testing and the store links are ready.
+        Launch is aimed at <strong>Monday 1 February 2027</strong>. Leave your email and we’ll tell you when TestFlight / closed testing and the store links are ready.
       </p>
-      <!-- FORM HELD until CAFO clears ICO. Do not wire Microsoft Forms / Airtable until then. -->
-      <span class="btn" role="button" aria-disabled="true">Join opens soon</span>
-      <p class="note">
-        We’re not collecting emails yet. When the form goes live, it will use existing Wayside tools only (Microsoft Forms or Airtable), and a short privacy notice will sit on this page.
-      </p>
+      <!-- WAITLIST FORM (go-live Tue 20 Oct 2026).
+           Before merging: set data-endpoint to the real HTTPS endpoint (e.g. the Make.com webhook URL).
+           HTTPS gate: the form stays disabled unless the page itself is served over https:// AND the
+           endpoint is https://. Keep this gate; do not remove it to work around a missing certificate. -->
+      <form id="waitlist-form" class="wl-form" method="post" novalidate
+            data-endpoint="" data-list="onehand-waitlist">
+        <label for="wl-email">Email address</label>
+        <input id="wl-email" name="email" type="email" autocomplete="email" required disabled />
+        <label for="wl-name">First name <span class="opt">(optional)</span></label>
+        <input id="wl-name" name="first_name" type="text" autocomplete="given-name" maxlength="60" disabled />
+        <div class="hp" aria-hidden="true">
+          <label for="wl-website">Leave this empty</label>
+          <input id="wl-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <label class="consent">
+          <input id="wl-consent" name="consent" type="checkbox" value="yes" required disabled />
+          <span>Email me about OneHand testing and launch. I can unsubscribe at any time. See the <a href="privacy.html">privacy notice</a> for how Wayside Labs uses my email.</span>
+        </label>
+        <button id="wl-submit" class="btn btn-live" type="submit" disabled>Join the waitlist</button>
+        <p id="wl-status" class="note" role="status" aria-live="polite">Sign-up opens shortly. It switches on once this page is on a secure (https) connection.</p>
+      </form>
+      <noscript><p class="note">Please turn on JavaScript to join the waitlist.</p></noscript>
     </section>
 
     <footer>
-      <p>Wayside Labs · waysidelabs.co.uk/onehand · draft for Tue 20 Oct 2026 go-live</p>
-      <p><a href="privacy.html">Privacy notice</a> · form and public indexing held until ICO clear</p>
+      <p>Wayside Labs · waysidelabs.co.uk/onehand </p>
+      <p><a href="privacy.html">Privacy notice</a></p>
     </footer>
   </main>
+  <script>
+  (function () {
+    var form = document.getElementById('waitlist-form');
+    var status = document.getElementById('wl-status');
+    var endpoint = (form.getAttribute('data-endpoint') || '').trim();
+    // HTTPS gate: page and endpoint must both be https, or the form stays off.
+    var secure = window.location.protocol === 'https:' && /^https:\/\//i.test(endpoint);
+    if (!secure) { return; }
+    Array.prototype.forEach.call(form.querySelectorAll('input, button'), function (el) { el.disabled = false; });
+    status.textContent = '';
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.email.value.trim();
+      if (!email || !form.email.checkValidity()) { status.textContent = 'Please enter a valid email address.'; form.email.focus(); return; }
+      if (!form.consent.checked) { status.textContent = 'Please tick the box to agree to waitlist emails.'; form.consent.focus(); return; }
+      if (form.website.value) { status.textContent = 'Thanks, you’re on the list.'; form.reset(); return; }
+      var body = new URLSearchParams({
+        email: email,
+        first_name: form.first_name.value.trim(),
+        consent: 'yes',
+        consent_text: form.querySelector('.consent span').textContent.trim(),
+        list: form.getAttribute('data-list'),
+        page: window.location.href,
+        submitted_at: new Date().toISOString()
+      });
+      var btn = document.getElementById('wl-submit');
+      btn.disabled = true; status.textContent = 'Sending…';
+      fetch(endpoint, { method: 'POST', body: body })
+        .then(function (r) {
+          if (!r.ok) { throw new Error('HTTP ' + r.status); }
+          status.textContent = 'Thanks, you’re on the list. Check your inbox for a welcome email.';
+          form.reset();
+        })
+        .catch(function () { status.textContent = 'Sorry, that didn’t go through. Please try again in a minute.'; })
+        .then(function () { btn.disabled = false; });
+    });
+  })();
+  </script>
 </body>
 </html>
