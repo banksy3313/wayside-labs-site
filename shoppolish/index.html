@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopPolish | Wayside Labs</title>
+<meta name="description" content="ShopPolish from Wayside Labs: a free score for your Etsy shop listings, then done-for-you rewrites of titles, tags and descriptions. UK sellers only.">
+<!-- ShopPolish page v1.2 (ETSDEV). Copy approved by Carl. Reuses Wayside Labs tokens from /nourish-weekly/. -->
+<style>
+:root{--navy:#1F2A44;--body:#2D3748;--brand:#3B5B8C;--muted:#5B6778;--border:#DDE3EA;--white:#FFFFFF;--tint:#F3F6FA}
+*{box-sizing:border-box}
+body{margin:0;font-family:Calibri,Carlito,"Segoe UI",system-ui,sans-serif;color:var(--body);background:var(--white);line-height:1.55}
+.top{height:4px;background:var(--brand)}
+.wrap{max-width:960px;margin:0 auto;padding:0 1.25rem}
+header.bar{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;border-bottom:1px solid var(--border)}
+header.bar img{height:44px}
+header.bar a{color:var(--brand);font-weight:700;text-decoration:none;font-size:.95rem}
+.kicker{color:var(--brand);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:0 0 .75rem}
+h1{color:var(--navy);font-size:2.5rem;line-height:1.15;margin:0 0 .9rem}
+h2{color:var(--navy);font-size:1.6rem;line-height:1.25;margin:0 0 1.2rem}
+h3{color:var(--navy);font-size:1.1rem;margin:.2rem 0 .4rem}
+p{margin:0 0 .9rem}
+a{color:var(--brand)}
+section{padding:3.2rem 0;border-bottom:1px solid var(--border)}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:2.5rem;align-items:center}
+.lead{font-size:1.2rem}
+.btn{display:inline-block;background:var(--brand);color:#fff;font-weight:700;padding:.8rem 1.4rem;border-radius:6px;text-decoration:none}
+.btn.ghost{background:none;color:var(--brand);border:2px solid var(--brand)}
+.card{border:1px solid var(--border);border-radius:10px;padding:1.4rem;background:#fff}
+.score{background:var(--tint)}
+.score .big{font-size:3.4rem;font-weight:700;color:var(--navy);line-height:1}
+.score .big span{font-size:1.3rem;color:var(--muted)}
+.score ol{margin:.8rem 0 0;padding-left:1.2rem}.score li{margin:.25rem 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.num{display:inline-flex;width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;align-items:center;justify-content:center}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.ba .tag{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ba .after .tag{color:var(--brand)}
+.ba .after{border-color:var(--brand)}
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.price{font-size:2.2rem;font-weight:700;color:var(--navy)}.price small{font-size:1rem;color:var(--muted)}
+.prices ul{padding-left:1.1rem;margin:.6rem 0 1.2rem}
+.feature{border:2px solid var(--brand)}
+.badge{display:inline-block;font-size:.72rem;font-weight:700;background:var(--tint);color:var(--brand);padding:.15rem .55rem;border-radius:20px;margin-left:.3rem;vertical-align:middle}
+details{border:1px solid var(--border);border-radius:8px;padding:.9rem 1.1rem;margin:.6rem 0}
+summary{font-weight:700;color:var(--navy);cursor:pointer}
+details p{margin:.6rem 0 0}
+.form{background:var(--tint);border-radius:10px;padding:1.6rem;text-align:center;color:var(--muted)}
+footer{padding:1.6rem 0 2.5rem;font-size:.85rem;color:var(--muted)}footer p{margin:0 0 .4rem}
+@media(max-width:760px){.hero,.steps,.ba,.prices{grid-template-columns:1fr}h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="top" aria-hidden="true"></div>
+<div class="wrap">
+<header class="bar"><span style="display:flex;align-items:center;gap:.6rem;font-weight:700;color:var(--navy);font-size:1.15rem"><img src="wayside_logo.png" alt="">Wayside Labs</span><a href="#score">Get your free score</a></header>
+
+<section class="hero">
+ <div>
+  <p class="kicker">Wayside Labs · ShopPolish</p>
+  <h1>We rewrite your Etsy listings for you.</h1>
+  <p class="lead">Done for you, not another DIY tool. Send us 3–5 listings and get a free shop score with your top 5 fixes. If you like what you see, we rewrite up to 25 listings within 48 hours.</p>
+  <p><a class="btn" href="#score">Get my free score</a> &nbsp; <a class="btn ghost" href="#pricing">See pricing</a></p>
+  <p style="font-size:.9rem;color:var(--muted)">UK sellers only · No Etsy login needed · Results in 48 hours</p>
+ </div>
+ <div class="card score" aria-label="Example score">
+  <p class="kicker" style="margin-bottom:.4rem">Example free score</p>
+  <div class="big">62<span> / 100</span></div>
+  <ol>
+   <li>Titles lead with filler, not the search phrase</li>
+   <li>6 of 13 tag slots unused</li>
+   <li>Descriptions skip size and materials</li>
+   <li>Attributes left blank</li>
+   <li>Only 3 photos on best-seller</li>
+  </ol>
+ </div>
+</section>
+
+<section>
+ <h2>How it works</h2>
+ <div class="steps">
+  <div class="card"><span class="num">1</span><h3>Send 3–5 listings</h3><p>Paste the title, tags and description, or upload the CSV you export from Shop Manager. No login, no shop link needed.</p></div>
+  <div class="card"><span class="num">2</span><h3>Get your free score</h3><p>Within 48 hours you get a one-page score out of 100 and the 5 fixes that matter most.</p></div>
+  <div class="card"><span class="num">3</span><h3>We rewrite them</h3><p>Choose the rewrite and we send new titles, all 13 tags and descriptions for up to 25 listings, plus a short to-do list for you.</p></div>
+ </div>
+</section>
+
+<section>
+ <h2>Before and after</h2>
+ <div class="ba">
+  <div class="card"><p class="tag">Before</p><h3>Lovely Handmade Gift Print For Her Birthday Wall Art Cute</h3><p style="color:var(--muted)">7 tags · no size in description</p></div>
+  <div class="card after"><p class="tag">After</p><h3>Botanical Wall Art Print, A4 Leaf Illustration, Gift for Plant Lover</h3><p style="color:var(--muted)">13 tags · size, paper and delivery up front</p></div>
+ </div>
+ <p style="font-size:.85rem;color:var(--muted);margin-top:.8rem">Illustrative example, not a real customer.</p>
+</section>
+
+<section id="pricing">
+ <h2>Pricing</h2>
+ <div class="prices">
+  <div class="card"><p class="kicker">Free score</p><div class="price">£0</div><ul><li>Shop score out of 100</li><li>Top 5 fixes</li><li>3–5 listings</li></ul><a class="btn ghost" href="#score">Start free</a></div>
+  <div class="card feature"><p class="kicker">Rewrite</p><div class="price">£29 <small>one-off</small></div><ul><li>Up to 25 listings</li><li>New title, 13 tags, description each</li><li>Before/after report and seller to-do</li><li>Delivered in 48 hours</li></ul><a class="btn" href="#score">Start with the free score</a>
+<!-- SUMUP PAY BUTTON: £29 link live (21 Oct). -->
+<p style="margin-top:.8rem"><a class="btn ghost" href="https://pay.sumup.com/b2c/QEFP5YB1">Get my rewrite – £29</a></p></div>
+  <div class="card"><p class="kicker">Monitoring <span class="badge">Coming soon</span></p><div class="price">£15 <small>/ month</small></div><ul><li>Monthly re-score</li><li>Fresh fixes as listings change</li><li>Cancel any time</li></ul></div>
+ </div>
+</section>
+
+<section id="score">
+ <h2>Get your free score</h2>
+ <div class="form"><p>For now, requests come in by email. Tap the button and your email app opens with a short template. Paste 3–5 listings or attach your own Shop Manager CSV, confirm you're UK-based, and reply "I agree" to our <a href="terms/">terms and privacy note</a>. We never need your Etsy login.</p><p><a class="btn" href="mailto:shoppolish@cagroup.uk?subject=Free%20ShopPolish%20score%20request&body=Hi%20ShopPolish%2C%0A%0APlease%20don%27t%20send%20your%20Etsy%20password%20or%20any%20login%20details.%20We%20never%20need%20them.%0A%0AYour%20name%3A%0AEtsy%20shop%20name%3A%0A1.%20I%20confirm%20I%27m%20a%20UK-based%20seller%20%28yes/no%29%3A%0A%0A2.%20My%20listings%2C%20in%20either%20format%3A%0A%20%20%20a%29%20Paste%203-5%20listings%20below%2C%20each%20with%3A%20title%2C%20all%2013%20tags%2C%20the%20full%20description%2C%20and%20how%20many%20photos%20it%20has%20%28plus%20whether%20it%20has%20a%20video%29%2C%20OR%0A%20%20%20b%29%20Attach%20your%20own%20Shop%20Manager%20CSV%20export%20%28Shop%20Manager%20%3E%20Settings%20%3E%20Options%20%3E%20Download%20Data%20%3E%20Download%20CSV%29.%0A%0AListing%201%0ATitle%3A%0ATags%20%2813%29%3A%0ADescription%3A%0APhotos%20%28number%29%20/%20video%20%28yes/no%29%3A%0A%0AListing%202%0ATitle%3A%0ATags%20%2813%29%3A%0ADescription%3A%0APhotos%20%28number%29%20/%20video%20%28yes/no%29%3A%0A%0AListing%203%0ATitle%3A%0ATags%20%2813%29%3A%0ADescription%3A%0APhotos%20%28number%29%20/%20video%20%28yes/no%29%3A%0A%0A%28Add%20listings%204-5%20the%20same%20way%20if%20you%20like.%29%0A%0A3.%20Consent%3A%20type%20%22I%20agree%22%20to%20confirm%20you%20accept%20the%20terms%20%28waysidelabs.co.uk/shoppolish/terms/%29%20and%20that%20your%20listing%20details%20are%20used%20only%20to%20prepare%20your%20score%20and%20deleted%20after%2090%20days%3A%0A%0AHow%20did%20you%20hear%20about%20ShopPolish%3F%3A%0A">Email my listings for a free score</a></p><p style="font-size:.85rem">Or write to <a href="mailto:shoppolish@cagroup.uk">shoppolish@cagroup.uk</a>.</p></div>
+</section>
+
+<section>
+ <h2>FAQ</h2>
+ <details open><summary>Do you need my Etsy login?</summary><p>No. You paste your listings or upload your own Shop Manager CSV. We never ask for your password and never touch your shop.</p></details>
+ <details open><summary>Will this get me more sales or a better ranking?</summary><p>We can't guarantee rankings or sales. Nobody honestly can. We make your listings clearer and more complete, which gives them a better chance.</p></details>
+ <details open><summary>Who is it for?</summary><p>UK-based Etsy sellers only, for now.</p></details>
+ <details open><summary>How long does it take?</summary><p>Your free score and your paid rewrite each arrive within 48 hours.</p></details>
+ <details open><summary>Do you make things up about my products?</summary><p>No. If we need a detail we don't have, such as a size or material, we mark it [CONFIRM] for you to check.</p></details>
+</section>
+
+<footer>
+ <p>Etsy is a trademark of Etsy, Inc. ShopPolish is not endorsed by or affiliated with Etsy.</p>
+ <p>Privacy: under UK GDPR, the details you send are used only to prepare your score and report, and are deleted after 90 days.</p>
+ <p><a href="terms/">Terms and privacy</a></p>
+ <p>Wayside Labs · waysidelabs.co.uk/shoppolish</p>
+</footer>
+</div>
+</body></html>
