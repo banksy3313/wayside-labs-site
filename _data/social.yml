@@ -1,26 +1,14 @@
-# Social profile URLs for waysidelabs.co.uk.
-#
-# TODO: CONFIRM BEFORE USE. These accounts are not confirmed.
-# Instagram and TikTok are unverified candidates. Facebook is TBC.
-# The site hides any entry whose url is empty, so leave a url blank until it is confirmed.
-# Email templates cannot read this file. If a waitlist or welcome email is added, copy the
-# confirmed URLs into that template by hand and keep the same TODO markers until then.
-#
-# Handles awaiting confirmation:
-#   Instagram — nourish_weekly — https://www.instagram.com/nourish_weekly
-#   TikTok    — @nourishweeklyapp — https://www.tiktok.com/@nourishweeklyapp
-#   Facebook  — TBC — no URL yet
+# Confirmed social profiles for waysidelabs.co.uk.
+# An empty url is omitted from the Follow us links.
+# Email templates cannot read this file. Copy these URLs into any waitlist or welcome email by hand.
 
 links:
   - name: Instagram
     icon: instagram
-    # TODO: confirm handle nourish_weekly (unverified candidate)
-    url: "https://www.instagram.com/nourish_weekly"
+    url: "https://www.instagram.com/nourish_weekly/"
   - name: TikTok
     icon: tiktok
-    # TODO: confirm handle @nourishweeklyapp (unverified candidate)
     url: "https://www.tiktok.com/@nourishweeklyapp"
   - name: Facebook
     icon: facebook
-    # TODO: Facebook TBC. Leave url empty so this link stays hidden.
-    url: ""
+    url: "https://www.facebook.com/profile.php?id=61594297757295"
