@@ -1,0 +1,116 @@
+---
+# Jekyll reads _data/social.yml into this page. No theme layout.
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
+  <title>Free one-week family meal plan | Nourish Weekly</title>
+  <meta name="description" content="Seven simple UK family dinners and one shopping list grouped by aisle. Free PDF." />
+  <link rel="canonical" href="https://waysidelabs.co.uk/nourish-weekly/free-meal-plan/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Free one-week family meal plan | Nourish Weekly" />
+  <meta property="og:description" content="Seven simple UK family dinners and one shopping list grouped by aisle. Free PDF." />
+  <meta property="og:url" content="https://waysidelabs.co.uk/nourish-weekly/free-meal-plan/" />
+  <meta property="og:image" content="https://waysidelabs.co.uk/nourish-weekly/free-meal-plan-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free one-week family meal plan | Nourish Weekly" />
+  <meta name="twitter:description" content="Seven simple UK family dinners and one shopping list grouped by aisle. Free PDF." />
+  <meta name="twitter:image" content="https://waysidelabs.co.uk/nourish-weekly/free-meal-plan-og.png" />
+  <style>
+    :root {
+      --green: #1F4D3A;
+      --cream: #FBF6EE;
+      --ink: #3A3836;
+      --accent: #C4673F;
+      --muted: #5E675F;
+      --border: #E4DDD2;
+      --white: #FFFFFF;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Calibri, Carlito, "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.55;
+    }
+    .top { height: 4px; background: var(--green); }
+    .wrap { max-width: 640px; margin: 0 auto; padding: 2.5rem 1.25rem 3rem; }
+    .kicker {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 0.75rem;
+    }
+    h1 {
+      color: var(--green);
+      font-family: Georgia, "Palatino Linotype", Palatino, "Times New Roman", Times, serif;
+      font-size: 2.15rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+    }
+    p { margin: 0 0 0.9rem; }
+    a { color: var(--green); }
+    .muted { color: var(--muted); font-size: 0.9rem; }
+    .btn {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      font-weight: 700;
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--green);
+      border: 2px solid var(--green);
+    }
+    .cta { margin-top: 1.35rem; }
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+      padding-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--green); }
+    footer p { margin: 0 0 0.35rem; }
+  </style>
+</head>
+<body>
+  <div class="top" aria-hidden="true"></div>
+  <div class="wrap">
+    <header>
+      <p class="kicker">Wayside Labs · Nourish Weekly</p>
+      <p class="muted"><a href="../">← Nourish Weekly</a></p>
+    </header>
+    <main>
+      <h1>A free week of family dinners, sorted</h1>
+      <p>Seven simple UK family dinners and one shopping list, in a PDF.</p>
+      <p><a class="btn" href="../free-meal-plan.pdf?utm_source=website&amp;utm_medium=landing_page&amp;utm_campaign=nw_free_meal_plan&amp;utm_content=download">Download the free meal plan (PDF)</a></p>
+      <p class="cta">Want a plan built around your family every week? Nourish Weekly is coming soon.</p>
+      <p><a class="btn btn-ghost" href="https://www.instagram.com/nourish_weekly/?utm_source=website&amp;utm_medium=landing_page&amp;utm_campaign=nw_free_meal_plan&amp;utm_content=waitlist_cta" target="_blank" rel="noopener">Join the waitlist</a></p>
+    </main>
+    <footer>
+      <p>Wayside Labs · waysidelabs.co.uk/nourish-weekly</p>
+      <p><a href="../">Nourish Weekly</a> · <a href="../privacy/">Privacy policy</a> · <a href="../terms/">Terms of use</a> · <a href="../support/">Support</a></p>
+      {% include follow-us.html %}
+      <style>
+        nav.follow-us p.follow-us-heading,
+        nav.follow-us a { color: #1F4D3A; }
+        nav.follow-us a:focus-visible { outline-color: #1F4D3A; }
+      </style>
+    </footer>
+  </div>
+</body>
+</html>

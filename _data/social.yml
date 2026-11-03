@@ -1,0 +1,14 @@
+# Confirmed social profiles for waysidelabs.co.uk.
+# An empty url is omitted from the Follow us links.
+# Email templates cannot read this file. Copy these URLs into any waitlist or welcome email by hand.
+
+links:
+  - name: Instagram
+    icon: instagram
+    url: "https://www.instagram.com/nourish_weekly/"
+  - name: TikTok
+    icon: tiktok
+    url: "https://www.tiktok.com/@nourishweeklyapp"
+  - name: Facebook
+    icon: facebook
+    url: "https://www.facebook.com/profile.php?id=61594297757295"

@@ -1,0 +1,78 @@
+{% comment %}
+  Follow us. Reads only _data/social.yml. Skips any link with an empty url.
+  Inline SVGs only: no icon font, embed, or tracking script.
+{% endcomment %}
+{%- assign follow_visible = false -%}
+{%- for link in site.data.social.links -%}
+  {%- assign social_url = link.url | strip -%}
+  {%- if social_url != "" -%}
+    {%- assign follow_visible = true -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if follow_visible -%}
+<nav class="follow-us" aria-label="Follow us">
+  <p class="follow-us-heading">Follow us</p>
+  <ul class="follow-us-list">
+    {%- for link in site.data.social.links -%}
+      {%- assign social_url = link.url | strip -%}
+      {%- if social_url != "" -%}
+        <li>
+          <a href="{{ social_url }}" target="_blank" rel="noopener" aria-label="Follow us on {{ link.name }} (opens in a new tab)">
+            {%- case link.icon -%}
+              {%- when "instagram" -%}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                  <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/>
+                </svg>
+              {%- when "tiktok" -%}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M14 3h2.1c.3 1.7 1.3 3 3.1 3.6v2.2c-1.1-.1-2.1-.5-3-1.1v6.6c0 3.1-2.4 5.4-5.5 5.4S5.2 17.4 5.2 14.3 7.6 8.9 10.7 8.9c.4 0 .7 0 1.1.1v2.3c-.3-.1-.7-.2-1.1-.2-1.7 0-3 1.4-3 3.2s1.3 3.2 3 3.2 3-1.4 3-3.2V3z"/>
+                </svg>
+              {%- when "facebook" -%}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M14.6 8.4h2.6V5.5h-2.6c-2.2 0-3.7 1.5-3.7 3.7v1.6H8.4v2.9h2.5V20h3v-6.3h2.4l.4-2.9h-2.8V9.5c0-.6.4-1.1 1.1-1.1z"/>
+                </svg>
+            {%- endcase -%}
+            <span>{{ link.name }}</span>
+          </a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</nav>
+<style>
+  nav.follow-us { margin-top: 0.9rem; }
+  nav.follow-us p.follow-us-heading {
+    margin: 0;
+    color: #3B5B8C;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  nav.follow-us ul.follow-us-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1.15rem;
+    margin: 0.4rem 0 0;
+    padding: 0;
+  }
+  nav.follow-us li { margin: 0; }
+  nav.follow-us a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #3B5B8C;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  nav.follow-us a:hover { text-decoration: underline; }
+  nav.follow-us a:focus-visible {
+    outline: 2px solid #3B5B8C;
+    outline-offset: 3px;
+  }
+  nav.follow-us svg { display: block; flex: 0 0 auto; }
+</style>
+{%- endif -%}
