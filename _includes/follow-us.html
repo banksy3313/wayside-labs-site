@@ -1,7 +1,9 @@
 {% comment %}
   Follow us. Reads only _data/social.yml. Skips any link with an empty url.
   Inline SVGs only: no icon font, embed, or tracking script.
+  A page opts out with front matter hide_follow_us: true.
 {% endcomment %}
+{%- unless page.hide_follow_us -%}
 {%- assign follow_visible = false -%}
 {%- for link in site.data.social.links -%}
   {%- assign social_url = link.url | strip -%}
@@ -76,3 +78,4 @@
   nav.follow-us svg { display: block; flex: 0 0 auto; }
 </style>
 {%- endif -%}
+{%- endunless -%}
