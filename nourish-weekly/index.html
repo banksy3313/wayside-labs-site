@@ -18,6 +18,7 @@ layout: null
       --muted: #5B6778;
       --border: #DDE3EA;
       --white: #FFFFFF;
+      --wl-heading-font: Calibri, Carlito, "Segoe UI", system-ui, sans-serif;
     }
     * { box-sizing: border-box; }
     body {
@@ -81,8 +82,9 @@ layout: null
     </header>
     <main>
     <h1>Nourish Weekly</h1>
+    <p>Join the waitlist and get a free one-week family meal plan (PDF). <a href="free-meal-plan/">More about the free plan</a>.</p>
+    {% include nw-waitlist-form.html privacy_href="privacy/" %}
     <p>Nourish Weekly is a meal-planning app from Wayside Labs. You enter your weight, height, age and routine, and it builds a two-week plan, a shopping list and a simple food diary from recipes included with the app. Those details stay on your device. It is for adults aged 18 and over, and the nutrition content is planning information, not medical advice.</p>
-    <p><a href="free-meal-plan/">Free one-week meal plan</a>.</p>
     <nav aria-label="Nourish Weekly policies">
       <ul>
         <li><a href="privacy/">Privacy policy</a></li>
