@@ -1,0 +1,223 @@
+<style>
+  .cta-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.15rem 1.2rem 1.25rem;
+    margin: 1.35rem 0 0;
+  }
+  .cta-box h2 {
+    color: var(--green, var(--navy));
+    font-family: var(--wl-heading-font, Georgia, "Palatino Linotype", Palatino, "Times New Roman", Times, serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 0.45rem;
+  }
+  .cta-box p { margin: 0 0 0.75rem; }
+  .wl-form label { display: block; font-weight: 700; color: var(--green, var(--navy)); margin: 0.6rem 0 0.25rem; }
+  .wl-form .opt { font-weight: 400; color: var(--muted); }
+  .wl-form input[type="email"],
+  .wl-form input[type="text"] {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.6rem 0.7rem;
+    font: inherit;
+    color: var(--ink, var(--body));
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--white);
+  }
+  .wl-form .consent {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    font-weight: 400;
+    color: var(--ink, var(--body));
+    margin: 0.9rem 0;
+  }
+  .wl-form .consent input { margin-top: 0.3rem; accent-color: var(--green, var(--brand)); flex: 0 0 auto; }
+  .wl-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .wl-btn {
+    display: inline-block;
+    background: var(--green, var(--brand));
+    color: var(--white);
+    font: inherit;
+    font-weight: 700;
+    padding: 0.75rem 1.25rem;
+    border: 0;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+  }
+  .wl-btn[disabled] { background: var(--muted); cursor: not-allowed; opacity: 0.85; }
+  .wl-btn:not([disabled]) { cursor: pointer; }
+  .wl-form input:focus-visible,
+  .wl-btn:focus-visible {
+    outline: 2px solid var(--green, var(--brand));
+    outline-offset: 2px;
+  }
+  .note { font-size: 0.9rem; color: var(--muted); margin: 0.5rem 0 0; }
+  .wl-status:empty { margin: 0; }
+  .wl-status.ok { color: #1F7A4D; font-weight: 700; }
+  .wl-status.err { color: #B23B22; font-weight: 700; }
+  .cta-box .wl-thanks h2 { color: #1F7A4D; }
+  .wl-thanks .wl-btn { margin-top: 0.15rem; }
+</style>
+<section class="cta-box" aria-labelledby="waitlist">
+  <div id="wl-signup">
+    <h2 id="waitlist">Waitlist</h2>
+    <p>Want a plan built around your family every week? Nourish Weekly is coming soon. Leave your email and we’ll tell you when it launches.</p>
+    <!-- WAITLIST FORM.
+         data-endpoint is the Make.com custom webhook for the Nourish Weekly waitlist scenario.
+         It is not the Thumblog webhook. Make filters on app === "nourish-weekly".
+         Payload: JSON body sent as Content-Type text/plain (a CORS "simple request", so no preflight).
+         If you change the consent wording below, bump CONSENT_VERSION in the script.
+         HTTPS gate: the form stays disabled unless the page itself is served over https:// AND the
+         endpoint is https://. Keep this gate; do not remove it to work around a missing certificate.
+         utm_source, utm_medium and utm_campaign are read from this page’s URL and kept in
+         sessionStorage so another click on the page does not drop them.
+         The meal-plan PDF is the thank-you. The script sets its href only after HTTP 2xx.
+         Do not put that file path in this markup. A honeypot or a failed submit must not reveal it. -->
+    <form id="waitlist-form" class="wl-form" method="post" novalidate
+          data-endpoint="https://hook.eu1.make.com/yhoywh4d751ynol9ya18n39v2pj24xv2">
+      <label for="wl-email">Email address</label>
+      <input id="wl-email" name="email" type="email" autocomplete="email" required disabled />
+      <label for="wl-name">First name <span class="opt">(optional)</span></label>
+      <input id="wl-name" name="first_name" type="text" autocomplete="given-name" maxlength="60" disabled />
+      <div class="hp" aria-hidden="true">
+        <label for="wl-website">Leave this empty</label>
+        <input id="wl-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+      <label class="consent">
+        <input id="wl-consent" name="consent" type="checkbox" value="yes" required disabled />
+        <span id="wl-consent-text">Email me about Nourish Weekly launch updates. I can unsubscribe at any time. See the <a href="{{ include.privacy_href }}#waitlist-signups">privacy policy</a> for how Wayside Labs uses my email.</span>
+      </label>
+      <button id="wl-submit" class="wl-btn" type="submit" disabled>Join the waitlist</button>
+      <p id="wl-status" class="note wl-status" role="status" aria-live="polite">Sign-up opens shortly. It switches on once this page is on a secure (https) connection.</p>
+    </form>
+    <noscript><p class="note">Please turn on JavaScript to join the waitlist.</p></noscript>
+  </div>
+  <div id="wl-thanks" class="wl-thanks" hidden>
+    <h2 id="wl-thanks-title" tabindex="-1">Thanks, you’re on the list</h2>
+    <p>We’ll email you when Nourish Weekly launches.</p>
+    <p>Here’s your free week of family dinners.</p>
+    <p><a id="wl-pdf" class="wl-btn">Download the free meal plan (PDF)</a></p>
+  </div>
+</section>
+
+  <script>
+  (function () {
+    // Bump this whenever the consent wording (#wl-consent-text) changes.
+    var CONSENT_VERSION = 'nw-waitlist-v1-2026-11-05';
+    var APP = 'nourish-weekly';
+    var UTM_NAMES = ['utm_source', 'utm_medium', 'utm_campaign'];
+    var UTM_KEY = 'nourish-weekly-waitlist-utms';
+
+    // Real plan file. Assigned to the download link only after HTTP 2xx.
+    var PDF_URL = '/nourish-weekly/plans/f87956f671f674a65e0e4faaf07c3398.pdf';
+
+    function showPlan() {
+      var signup = document.getElementById('wl-signup');
+      var thanks = document.getElementById('wl-thanks');
+      var pdf = document.getElementById('wl-pdf');
+      var title = document.getElementById('wl-thanks-title');
+      pdf.setAttribute('href', PDF_URL);
+      signup.hidden = true;
+      thanks.hidden = false;
+      var section = form.closest('section');
+      if (section) section.setAttribute('aria-labelledby', 'wl-thanks-title');
+      title.focus();
+    }
+
+    var form = document.getElementById('waitlist-form');
+    var status = document.getElementById('wl-status');
+    var btn = document.getElementById('wl-submit');
+    var endpoint = (form.getAttribute('data-endpoint') || '').trim();
+
+    function say(msg, kind) {
+      status.textContent = msg;
+      status.className = 'note wl-status' + (kind ? ' ' + kind : '');
+    }
+
+    function trimUtm(value) {
+      return (value || '').toString().trim().slice(0, 100);
+    }
+
+    function readStoredUtms() {
+      try {
+        var raw = sessionStorage.getItem(UTM_KEY);
+        if (!raw) return null;
+        var parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object') return null;
+        var out = {};
+        UTM_NAMES.forEach(function (name) { out[name] = trimUtm(parsed[name]); });
+        return out;
+      } catch (err) {
+        return null;
+      }
+    }
+
+    function writeStoredUtms(values) {
+      try { sessionStorage.setItem(UTM_KEY, JSON.stringify(values)); } catch (err) {}
+    }
+
+    // A link that carries any of these UTMs replaces the stored set. A later view
+    // of this page with none of them (for example after opening the PDF) keeps it.
+    var params = new URLSearchParams(window.location.search);
+    var fromUrl = {};
+    var urlHasUtm = false;
+    UTM_NAMES.forEach(function (name) {
+      fromUrl[name] = trimUtm(params.get(name));
+      if (fromUrl[name]) urlHasUtm = true;
+    });
+    var utms = urlHasUtm ? fromUrl : (readStoredUtms() || fromUrl);
+    if (urlHasUtm) writeStoredUtms(utms);
+    function utm(name) { return utms[name] || ''; }
+
+    // HTTPS gate: page and endpoint must both be https, or the form stays off.
+    var secure = window.location.protocol === 'https:' && /^https:\/\//i.test(endpoint);
+    if (!secure) { return; }
+    Array.prototype.forEach.call(form.querySelectorAll('input, button'), function (el) { el.disabled = false; });
+    say('');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.email.value.trim();
+      if (!email || !form.email.checkValidity()) { say('Please enter a valid email address.', 'err'); form.email.focus(); return; }
+      if (!form.consent.checked) { say('Please tick the box to agree to waitlist emails.', 'err'); form.consent.focus(); return; }
+      // Spam trap filled: drop silently, but look successful to the bot.
+      if (form.website.value) { say('Thanks, you’re on the list.', 'ok'); form.reset(); return; }
+
+      var utmSource = utm('utm_source');
+      var payload = {
+        email: email,
+        first_name: form.first_name.value.trim(),
+        app: APP,
+        source: utmSource || document.referrer || 'direct',
+        utm_source: utmSource,
+        utm_medium: utm('utm_medium'),
+        utm_campaign: utm('utm_campaign'),
+        consent: true,
+        consent_version: CONSENT_VERSION,
+        page_url: window.location.href,
+        submitted_at: new Date().toISOString()
+      };
+
+      btn.disabled = true; say('Sending…');
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (r) {
+          if (!r.ok) { throw new Error('HTTP ' + r.status); }
+          showPlan();
+        })
+        .catch(function () {
+          say('Sorry, that didn’t go through. Please try again in a minute.', 'err');
+          btn.disabled = false;
+        });
+    });
+  })();
+  </script>
