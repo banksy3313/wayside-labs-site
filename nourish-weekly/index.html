@@ -9,7 +9,7 @@ layout: null
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Nourish Weekly | Wayside Labs</title>
-  <meta name="description" content="Nourish Weekly is a meal-planning app from Wayside Labs for adults aged 18 and over. It builds a two-week plan, a shopping list and a food diary on your device. Nutrition content is planning information, not medical advice." />
+  <meta name="description" content="Nourish Weekly plans your week of meals and turns it into one shopping list. Get it on Google Play." />
   <style>
     :root {
       --navy: #1F2A44;
@@ -72,6 +72,24 @@ layout: null
     }
     footer a { color: var(--brand); }
     footer p { margin: 0 0 0.35rem; }
+    .play-badge { margin: 0.35rem 0 0.15rem; }
+    .play-badge a {
+      display: inline-block;
+      line-height: 0;
+      /* Clear space required by the Google Play badge guidelines: one quarter of the 60px badge height. */
+      margin: 15px;
+    }
+    .play-badge img {
+      display: block;
+      width: 202px;
+      max-width: 100%;
+      height: auto;
+      border: 0;
+    }
+    .play-badge a:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
@@ -81,10 +99,25 @@ layout: null
       <p class="kicker">Wayside Labs · Nourish Weekly</p>
     </header>
     <main>
-    <h1>Nourish Weekly</h1>
-    <p>Join the waitlist and get a free one-week family meal plan (PDF). <a href="free-meal-plan/">More about the free plan</a>.</p>
-    {% include nw-waitlist-form.html privacy_href="privacy/" %}
-    <p>Nourish Weekly is a meal-planning app from Wayside Labs. You enter your weight, height, age and routine, and it builds a two-week plan, a shopping list and a simple food diary from recipes included with the app. Those details stay on your device. It is for adults aged 18 and over, and the nutrition content is planning information, not medical advice.</p>
+    <h1>What’s for tea this week? Sorted.</h1>
+    <p>Nourish Weekly plans your week of meals and turns it into one shopping list.</p>
+    <ul>
+      <li>Plan the whole week in a few taps</li>
+      <li>One shopping list for everything you need</li>
+      <li>Swap any meal you don’t fancy</li>
+    </ul>
+    <!-- Official “Get it on Google Play” badge (English), unmodified, from Google’s Partner Marketing Hub.
+         https://play.google.com/intl/en_us/badges/ -->
+    <div class="play-badge">
+      <a href="https://play.google.com/store/apps/details?id=uk.cagroup.nourish&amp;hl=en_GB&amp;utm_source=website&amp;utm_medium=download_block&amp;utm_campaign=nw_first100">
+        <img src="/assets/google-play/GetItOnGooglePlay_Badge_Web_color_English.png"
+             width="478" height="142"
+             alt="Get it on Google Play" />
+      </a>
+    </div>
+    <p class="muted">7 days free, then £5.99 a month (or £49.99 a year) unless you cancel.</p>
+    <p>On iPhone? The iOS app is on its way. Join the waitlist and we’ll tell you when it’s ready.</p>
+    {% include nw-waitlist-form.html privacy_href="privacy/" hide_lead=true thanks="We’ll email you when the iOS app is ready." %}
     <nav aria-label="Nourish Weekly policies">
       <ul>
         <li><a href="privacy/">Privacy policy</a></li>
@@ -96,6 +129,7 @@ layout: null
     <footer>
       <p>Wayside Labs · waysidelabs.co.uk/nourish-weekly</p>
       <p><a href="privacy/">Privacy policy</a> · <a href="terms/">Terms of use</a> · <a href="support/">Support</a></p>
+      <p>Google Play and the Google Play logo are trademarks of Google LLC.</p>
       {% include follow-us.html %}
     </footer>
   </div>

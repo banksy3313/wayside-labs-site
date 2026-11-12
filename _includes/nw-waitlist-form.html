@@ -67,7 +67,9 @@
 <section class="cta-box" aria-labelledby="waitlist">
   <div id="wl-signup">
     <h2 id="waitlist">Waitlist</h2>
+    {% unless include.hide_lead %}
     <p>Want a plan built around your family every week? Nourish Weekly is coming soon. Leave your email and we’ll tell you when it launches.</p>
+    {% endunless %}
     <!-- WAITLIST FORM.
          data-endpoint is the Make.com custom webhook for the Nourish Weekly waitlist scenario.
          It is not the Thumblog webhook. Make filters on app === "nourish-weekly".
@@ -100,7 +102,7 @@
   </div>
   <div id="wl-thanks" class="wl-thanks" hidden>
     <h2 id="wl-thanks-title" tabindex="-1">Thanks, you’re on the list</h2>
-    <p>We’ll email you when Nourish Weekly launches.</p>
+    <p>{% if include.thanks %}{{ include.thanks }}{% else %}We’ll email you when Nourish Weekly launches.{% endif %}</p>
     <p>Here’s your free week of family dinners.</p>
     <p><a id="wl-pdf" class="wl-btn">Download the free meal plan (PDF)</a></p>
   </div>
