@@ -9,7 +9,7 @@ layout: null
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Privacy policy — Nourish Weekly | Wayside Labs</title>
-  <meta name="description" content="Privacy policy for Nourish Weekly, published by Carl Banks, trading as Wayside Labs. Explains what the app does with personal data. Last updated 10 November 2026." />
+  <meta name="description" content="Privacy policy for Nourish Weekly, published by Carl Banks, trading as Wayside Labs. Explains what the app does with personal data, including the account and subscription emails. Last updated 17 November 2026." />
   <style>
     :root {
       --navy: #1F2A44;
@@ -82,7 +82,7 @@ layout: null
     </header>
     <main>
     <h1>Privacy policy</h1>
-    <p>Nourish Weekly is published by Carl Banks, trading as Wayside Labs, of Wayside House, Ipsley, B98 0AL, United Kingdom. This policy explains what the app does with personal data. It was last updated on 10 November 2026.</p>
+    <p>Nourish Weekly is published by Carl Banks, trading as Wayside Labs, of Wayside House, Ipsley, B98 0AL, United Kingdom. This policy explains what the app does with personal data. It was last updated on 17 November 2026.</p>
     <p>Questions and privacy requests go to <a href="mailto:support@waysidelabs.co.uk">support@waysidelabs.co.uk</a>.</p>
 
     <section id="data-controller">
@@ -98,77 +98,85 @@ layout: null
     </section>
 
     <section>
-      <h2>There is no account</h2>
-      <p>The app has no sign-in and no account. It does not ask for your email address, and it does not send a name or email address to us.</p>
+      <h2>Your account</h2>
+      <p>You need an account to use Nourish Weekly. You sign in with your email address. We send a 6-digit code to that address, from hello@waysidelabs.co.uk, and you enter the code in the app.</p>
+      <p>Supabase hosts the account. It stores your email address and an account ID. The app also keeps the sign-in session on the device so you stay signed in.</p>
+      <p>We use the account to let you in, to match your subscription to you, and to send the service emails described below. The lawful basis is contract. This processing is part of providing the subscription you asked for.</p>
     </section>
 
     <section>
       <h2>Data stored on your device</h2>
-      <p>The details you enter, and the plans the app builds from them, are saved on the phone or tablet in the app’s own storage. Wayside Labs does not run a server that receives this information. It is used to calculate calorie targets, build the two-week meal plan, keep your shopping list and show your progress.</p>
+      <p>The details you enter, and the plans the app builds from them, are saved on the phone or tablet in the app’s own storage. That record is used to calculate calorie targets, build the two-week meal plan, keep your shopping list and show your progress. It is not uploaded with your account.</p>
       <p>That on-device record can include:</p>
       <ul>
-        <li>a profile name, body weight, height, age and a sex value used in the calorie estimate;</li>
-        <li>your choice of units (kilograms and centimetres, or pounds and inches);</li>
+        <li>a profile name, which is optional, plus body weight, height, age and a sex value used in the calorie estimate;</li>
+        <li>your choice of units (kilograms, pounds, or stones and pounds), and whether the takeaway list is the UK or US list;</li>
         <li>goal and pace, daily movement, and exercise sessions, type, intensity and length;</li>
-        <li>how many meals and snacks you want each day, and foods and flavours you mark as liked;</li>
-        <li>whether you chose the everyday plan or the “Coming off GLP-1” planning route, and which stage you selected;</li>
+        <li>how many meals and snacks you want each day, and foods and flavours you mark as liked or avoided;</li>
         <li>optional trainer-set calories, protein, carbohydrates and fat;</li>
-        <li>the generated weeks, meals you add, remove, replace or favourite, custom meal names and macros you type, and restaurant meals you add from the built-in list;</li>
-        <li>weight check-ins with the date, a short history of daily calorie and macro totals, and which shopping items you have ticked.</li>
+        <li>the generated weeks, meals you add, remove, replace or save as favourites, including takeaway meals from the built-in list, and custom meal names and macros you type;</li>
+        <li>weight check-ins, saved in kilograms with the date, a short history of daily calorie and macro totals, and which shopping items you have ticked.</li>
       </ul>
-      <p>A new install starts from a sample profile so the plan can be shown immediately. The sample includes a name, a male sex value and sample body measurements. The current version has no control to edit the name or the sex value, and the sex value is still used when the app estimates calories. Weight, height, age and the other fields above can be edited on the Profile screen.</p>
-      <p>The “Coming off GLP-1” choice is a planning setting. The app does not ask for a medicine name, dose, prescriber or clinical record.</p>
+      <p>The app reads the device region on the phone to suggest the UK or US takeaway list. You can change that choice on the Profile screen. Body measurements, the meal plan and that region choice stay on the device. They are not stored in the Supabase account.</p>
+      <p>Until you finish setup, the app can show a sample profile, including a name, a male sex value and sample body measurements. Setup replaces it. You can edit the name, sex, weight, height, age and the other fields above on the Profile screen. Setup does not continue if the age is under 18.</p>
+      <p>The app does not ask for a medicine name, dose, prescriber or clinical record.</p>
     </section>
 
     <section>
       <h2>When data leaves the device</h2>
-      <p>Three things can leave the device. Nothing else in the app sends your profile, weight, meals or diary to Wayside Labs.</p>
+      <h3>Sign-in</h3>
+      <p>When you ask for a code, the app sends your email address to Supabase. Supabase Auth sends the 6-digit code through Resend, our email processor, from hello@waysidelabs.co.uk.</p>
       <h3>Subscriptions</h3>
-      <p>Membership is handled by RevenueCat, Inc. When the app checks whether a subscription is active, or you buy or restore one, RevenueCat receives an anonymous identifier that it creates for that install, the store product, the purchase or restore result, and technical details of the request such as device type, operating system, locale, currency and IP address. The app does not give RevenueCat your name, email, weight, age or meal plan, and it does not turn on advertising identifiers.</p>
-      <p>Apple or Google processes the payment. Wayside Labs does not receive your card or bank details. Apple and Google also keep their own record of the transaction under their policies.</p>
-      <h3>Meal photographs</h3>
-      <p>Meal pictures are loaded from Unsplash and Pexels when a meal is shown. Those services receive the ordinary details of an image request, including your IP address and the address of the photograph. The app does not attach your name or profile to that request.</p>
+      <p>The Apple App Store or Google Play handles the subscription and any free trial, and takes the payment. Wayside Labs does not receive your card or bank details. Apple and Google keep their own record of the transaction under their policies.</p>
+      <p>The app uses RevenueCat, Inc. to check whether the subscription is active. RevenueCat receives your account ID and the email address you signed in with. The app does not send RevenueCat your name, weight, age, meals or diary.</p>
+      <p>When the subscription changes, RevenueCat notifies our service. To time the emails below, we store the account ID, the email address, the store transaction reference, the product, the price and currency, and the relevant dates.</p>
+      <h3>Service emails about the subscription</h3>
+      <p>We email the address on your account about the subscription. These are service messages about the subscription, not marketing. They are separate from the website waitlist. Resend sends them. The lawful basis is contract. The messages are:</p>
+      <ul>
+        <li>a reminder 3 days before a free trial ends;</li>
+        <li>on a yearly plan, a reminder 30 days before renewal, and again 7 days before;</li>
+        <li>on a monthly plan, a reminder 7 days before the renewal at each 6-month point;</li>
+        <li>a note on the day a 14-day cancellation window starts;</li>
+        <li>a note when the subscription has ended.</li>
+      </ul>
+      <p>A message can name the date the period ends and, when we have it, the store price and currency. It does not include your weight, meals or profile. If the account has been deleted, the message is not sent.</p>
       <h3>Food diary you choose to send</h3>
-      <p>If you tap “Download or send food diary”, the app opens your device’s share sheet with a plain-text summary of the two planned weeks (calories, protein, carbohydrates and fat for each day) and your current weight in kilograms. It goes only to the app or person you pick. Wayside Labs does not receive a copy.</p>
+      <p>If you tap “Share food diary”, the app opens your device’s share sheet with a plain-text summary of the two planned weeks (calories, protein, carbohydrates and fat for each day) and your current weight in the units on your profile. It goes only to the app or person you pick. Wayside Labs does not receive a copy.</p>
+      <p>If you tap a source link on a meal, the device opens that page. The app does not add your name or account to the address.</p>
     </section>
 
     <section>
       <h2>Who else receives data</h2>
       <ul>
-        <li>RevenueCat, Inc., to validate the subscription and tell the app whether Premium is active.</li>
-        <li>Apple (App Store and StoreKit) or Google (Google Play Billing), to take payment and restore purchases.</li>
-        <li>Unsplash and Pexels, to deliver meal photographs.</li>
-        <li>On Android, Google, if the device’s backup is switched on. See “Backups” below.</li>
+        <li>Supabase, which hosts the account and the records used to send the subscription emails. Supabase is our processor for that.</li>
+        <li>Resend, which sends the sign-in code and the subscription service emails. Resend is our email processor.</li>
+        <li>RevenueCat, Inc., which checks whether the subscription is active. We give RevenueCat the account ID and the sign-in email.</li>
+        <li>Apple (App Store) or Google (Google Play), which take payment and restore purchases.</li>
         <li>Whatever app you choose in the share sheet, and only if you send the diary.</li>
       </ul>
+      <p>Meal photographs are included in the app. They are not loaded from a photo website.</p>
       <p>We do not sell personal data. The app does not include advertising, analytics or crash-reporting services, and it does not track you across other companies’ apps or websites.</p>
     </section>
 
     <section>
-      <h2>Backups</h2>
-      <p>On iPhone and iPad, the app’s saved data is kept out of iCloud backup. Deleting the app removes that copy.</p>
-      <p>On Android, backup of app data is allowed. If Android backup is on, Google may keep a copy in the Google account backup for that device. Wayside Labs cannot read that backup. Uninstalling the app removes the copy on the phone, and the Google account backup can remain until you delete it in Android’s backup settings.</p>
-    </section>
-
-    <section>
       <h2>How long it is kept</h2>
-      <p>The on-device record stays until you reset it in the app or uninstall the app, and, on Android, until a device backup of it is deleted. A food diary you share is then kept by the service you sent it to, under that service’s policy. Purchase records stay with RevenueCat until you ask us to delete them, and with Apple or Google for as long as those companies keep store transactions.</p>
+      <p>We keep your email address, account ID and the records used to send the subscription emails until you delete the account in the app. Deleting the account deletes them. We have not set a further retention period. If you believe we still hold a copy, email <a href="mailto:support@waysidelabs.co.uk">support@waysidelabs.co.uk</a> and ask us to delete it. We will delete what we still hold.</p>
+      <p>The plan and profile on the phone stay until you uninstall the app. Deleting the account does not clear that on-device copy. If the phone’s own backup is on, that backup can keep a copy until you delete it in the phone’s backup settings. Wayside Labs cannot read that backup. This app does not switch phone backup on or off.</p>
+      <p>A food diary you share is then kept by the service you sent it to, under that service’s policy. Apple, Google and RevenueCat keep the subscription record under their own policies.</p>
     </section>
 
     <section>
       <h2>Deleting your data</h2>
-      <p>There is no account to delete. You can remove the data in either of these ways:</p>
-      <ul>
-        <li>On the Profile screen, tap “Reset test data” and confirm. This replaces the saved profile, plans, favourites, weight check-ins and shopping ticks with the sample profile.</li>
-        <li>Uninstall Nourish Weekly. On Android, also delete the app’s backup in your Google account if you do not want a restore to bring the data back.</li>
-      </ul>
-      <p>Neither of those steps cancels a subscription or deletes the store’s record of a payment. To ask us to delete purchase data we hold through RevenueCat, email <a href="mailto:support@waysidelabs.co.uk">support@waysidelabs.co.uk</a>. Tell us whether you subscribed with Apple or Google and, if you have it, the transaction reference from the store receipt. Apple and Google keep their own payment records, and requests about those records go through the store.</p>
+      <p>In the app, open Profile, then Settings, then “Delete account”, and confirm. On the paywall, open Account, then “Delete account”. That deletes the Supabase account: the signed-in user, the email address, the account ID, and the records kept so the subscription emails can be sent. The app then signs you out.</p>
+      <p>Deleting the account does not cancel an App Store or Google Play subscription, and it does not delete the store’s payment record. Cancel the subscription in the store. The plan saved on the phone also stays until you uninstall Nourish Weekly. If a phone backup of the app remains, delete that backup as well if you want it gone.</p>
+      <p>The app does not itself delete the RevenueCat record of the account ID and email. To ask us to delete purchase data we hold through RevenueCat, email <a href="mailto:support@waysidelabs.co.uk">support@waysidelabs.co.uk</a>. You can also use the <a href="../support/">support page</a>. Tell us whether you subscribed with Apple or Google and, if you have it, the transaction reference from the store receipt. Requests about Apple’s or Google’s own payment records go through the store.</p>
     </section>
 
     <section>
       <h2>Your rights</h2>
-      <p>If UK data protection law applies, you can ask us for a copy of the personal data we hold about you, and you can ask us to correct it, delete it, restrict it, or send you a portable copy. You can object to processing based on legitimate interests. You can also complain to the Information Commissioner’s Office at <a href="https://ico.org.uk">ico.org.uk</a>. Because the profile and plans stay on your device, the practical way to see, correct or delete them is in the app, or by uninstalling it. Email us if you want help, or if the request is about a purchase.</p>
-      <p>We use the on-device data to provide the plan you asked for. We use purchase data to provide membership, to prevent fraudulent purchases, and to restore a subscription on a later install.</p>
+      <p>If UK data protection law applies, you can ask us for a copy of the personal data we hold about you, and you can ask us to correct it, delete it, restrict it, or send you a portable copy. You can object to processing based on legitimate interests. You can also complain to the Information Commissioner’s Office at <a href="https://ico.org.uk">ico.org.uk</a>.</p>
+      <p>The practical way to delete the account is in the app, as described above. The practical way to remove the plan is to uninstall the app. Email <a href="mailto:support@waysidelabs.co.uk">support@waysidelabs.co.uk</a> if you want help, or if the request is about a purchase.</p>
+      <p>We use the on-device data to provide the plan you asked for. We use the account, the sign-in code and the service emails to provide the subscription. We use the subscription record to check that membership is active and to restore it on a later install. The lawful basis for the account and the service emails is contract.</p>
     </section>
 
     <section id="waitlist-signups">
@@ -186,7 +194,7 @@ layout: null
 
     <section>
       <h2>Transfers outside the UK</h2>
-      <p>RevenueCat, Apple, Google, Unsplash and Pexels may process the data described above outside the United Kingdom, including in the United States. Where the law requires a safeguard for that transfer, the safeguard is the provider’s contractual terms or another lawful transfer mechanism.</p>
+      <p>Supabase, Resend, RevenueCat, Apple and Google may process the data described above outside the United Kingdom, including in the United States. Where the law requires a safeguard for that transfer, the safeguard is the provider’s contractual terms or another lawful transfer mechanism.</p>
     </section>
 
     <section>
