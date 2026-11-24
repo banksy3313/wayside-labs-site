@@ -64,14 +64,14 @@
   .cta-box .wl-thanks h2 { color: #1F7A4D; }
   .wl-thanks .wl-btn { margin-top: 0.15rem; }
 </style>
-<section class="cta-box" aria-labelledby="waitlist">
+<section class="cta-box" aria-labelledby="meal-plan">
   <div id="wl-signup">
-    <h2 id="waitlist">Waitlist</h2>
+    <h2 id="meal-plan">Free week of meals</h2>
     {% unless include.hide_lead %}
-    <p>Want a plan built around your family every week? Nourish Weekly is coming soon. Leave your email and we’ll tell you when it launches.</p>
+    <p>Leave your email to download the PDF.</p>
     {% endunless %}
-    <!-- WAITLIST FORM.
-         data-endpoint is the Make.com custom webhook for the Nourish Weekly waitlist scenario.
+    <!-- Email sign-up. The PDF link is added only after a successful submit.
+         data-endpoint is the Make.com custom webhook for the Nourish Weekly sign-up scenario.
          It is not the Thumblog webhook. Make filters on app === "nourish-weekly".
          Payload: JSON body sent as Content-Type text/plain (a CORS "simple request", so no preflight).
          If you change the consent wording below, bump CONSENT_VERSION in the script.
@@ -93,17 +93,16 @@
       </div>
       <label class="consent">
         <input id="wl-consent" name="consent" type="checkbox" value="yes" required disabled />
-        <span id="wl-consent-text">Email me about Nourish Weekly launch updates. I can unsubscribe at any time. See the <a href="{{ include.privacy_href }}#waitlist-signups">privacy policy</a> for how Wayside Labs uses my email.</span>
+        <span id="wl-consent-text">Email me about Nourish Weekly. I can unsubscribe at any time. See the <a href="{{ include.privacy_href }}#email-sign-up">privacy policy</a> for how Wayside Labs uses my email.</span>
       </label>
-      <button id="wl-submit" class="wl-btn" type="submit" disabled>Join the waitlist</button>
+      <button id="wl-submit" class="wl-btn" type="submit" disabled>Get the free meal plan</button>
       <p id="wl-status" class="note wl-status" role="status" aria-live="polite">Sign-up opens shortly. It switches on once this page is on a secure (https) connection.</p>
     </form>
-    <noscript><p class="note">Please turn on JavaScript to join the waitlist.</p></noscript>
+    <noscript><p class="note">Please turn on JavaScript to get the free meal plan.</p></noscript>
   </div>
   <div id="wl-thanks" class="wl-thanks" hidden>
-    <h2 id="wl-thanks-title" tabindex="-1">Thanks, you’re on the list</h2>
-    <p>{% if include.thanks %}{{ include.thanks }}{% else %}We’ll email you when Nourish Weekly launches.{% endif %}</p>
-    <p>Here’s your free week of family dinners.</p>
+    <h2 id="wl-thanks-title" tabindex="-1">Your free week of meals</h2>
+    <p>{% if include.thanks %}{{ include.thanks }}{% else %}Here’s your free week of meals.{% endif %}</p>
     <p><a id="wl-pdf" class="wl-btn">Download the free meal plan (PDF)</a></p>
   </div>
 </section>
@@ -111,7 +110,7 @@
   <script>
   (function () {
     // Bump this whenever the consent wording (#wl-consent-text) changes.
-    var CONSENT_VERSION = 'nw-waitlist-v1-2026-11-05';
+    var CONSENT_VERSION = 'nw-meal-plan-v1-2026-11-24';
     var APP = 'nourish-weekly';
     var UTM_NAMES = ['utm_source', 'utm_medium', 'utm_campaign'];
     var UTM_KEY = 'nourish-weekly-waitlist-utms';
@@ -187,9 +186,9 @@
       e.preventDefault();
       var email = form.email.value.trim();
       if (!email || !form.email.checkValidity()) { say('Please enter a valid email address.', 'err'); form.email.focus(); return; }
-      if (!form.consent.checked) { say('Please tick the box to agree to waitlist emails.', 'err'); form.consent.focus(); return; }
-      // Spam trap filled: drop silently, but look successful to the bot.
-      if (form.website.value) { say('Thanks, you’re on the list.', 'ok'); form.reset(); return; }
+      if (!form.consent.checked) { say('Please tick the box to agree to these emails.', 'err'); form.consent.focus(); return; }
+      // Spam trap filled: drop silently, but look successful to the bot. Do not reveal the PDF.
+      if (form.website.value) { say('Thanks.', 'ok'); form.reset(); return; }
 
       var utmSource = utm('utm_source');
       var payload = {

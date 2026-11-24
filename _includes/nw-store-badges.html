@@ -1,0 +1,58 @@
+{% comment %}
+  Official store badges, used unmodified.
+  Apple: black “Download on the App Store” SVG, English (GB). Apple’s en-gb
+  badge is the US–UK artwork (Download_on_the_App_Store_Badge_US-UK_RGB_blk).
+  Source: https://toolbox.marketingtools.apple.com/api/badges/download-on-the-app-store/black/en-gb
+  Google: “Get it on Google Play” English badge already stored at
+  assets/google-play/GetItOnGooglePlay_Badge_Web_color_English.png
+  Both are drawn at 60px tall (Apple’s on-screen minimum is 40px, Google’s is 28px).
+  Clear space is 15px, one quarter of that height, on every side. The App Store
+  badge is first. Aspect ratios are not changed.
+  Pass style=false when the <style> block is already on the page.
+  Pass closing=true for a second row lower on the page.
+{% endcomment %}
+{% unless include.style == false %}
+<style>
+  .store-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  .store-badges--closing { margin-top: 0.75rem; }
+  .store-badge {
+    display: inline-block;
+    line-height: 0;
+    /* One quarter of the 60px badge height. Two badges side by side therefore
+       keep 30px between the artworks, which is each badge’s own clear space. */
+    margin: 15px;
+    border: 0;
+    background: transparent;
+  }
+  .store-badge img {
+    display: block;
+    height: 60px;
+    width: auto;
+    max-width: none;
+    border: 0;
+    aspect-ratio: auto;
+  }
+  .store-badge:focus-visible {
+    outline: 2px solid var(--brand, var(--green, #1F4D3A));
+    outline-offset: 3px;
+  }
+</style>
+{% endunless %}
+<div class="store-badges{% if include.closing %} store-badges--closing{% endif %}">
+  <a class="store-badge" href="https://apps.apple.com/gb/app/nourish-weekly-meal-planner/id6814167386">
+    <img src="/assets/badges/download-on-the-app-store-en-gb.svg"
+         width="119.66407" height="40"
+         alt="Download on the App Store" />
+  </a>
+  <a class="store-badge" href="https://play.google.com/store/apps/details?id=uk.cagroup.nourish">
+    <img src="/assets/google-play/GetItOnGooglePlay_Badge_Web_color_English.png"
+         width="478" height="142"
+         alt="Get it on Google Play" />
+  </a>
+</div>

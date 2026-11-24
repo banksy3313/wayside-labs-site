@@ -1,52 +1,90 @@
-%PDF-1.4
+%PDF-1.3
+%“Œ‹ž ReportLab Generated PDF document (opensource)
 1 0 obj
-<< /Type /Catalog /Pages 2 0 R >>
+<<
+/F1 2 0 R /F2 3 0 R
+>>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
 endobj
 3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> /Annots [6 0 R] >>
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
 endobj
 4 0 obj
-<< /Length 361 >>
-stream
-BT
-/F1 18 Tf
-1 0 0 1 72 740 Tm
-(Nourish Weekly) Tj
-/F1 12 Tf
-1 0 0 1 72 704 Tm
-(This address no longer has the free meal plan.) Tj
-/F1 12 Tf
-1 0 0 1 72 672 Tm
-(Join the waitlist and the one-week plan is the thank-you:) Tj
-/F1 12 Tf
-1 0 0 1 72 650 Tm
-(https://waysidelabs.co.uk/nourish-weekly/free-meal-plan/) Tj
-/F1 12 Tf
-1 0 0 1 72 628 Tm
-(Wayside Labs) Tj
-ET
-endstream
+<<
+/A <<
+/S /URI /Type /Action /URI (https://apps.apple.com/gb/app/nourish-weekly-meal-planner/id6814167386)
+>> /Border [ 0 0 0 ] /Rect [ 54 677.8898 418.397 691.8898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 5 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+<<
+/A <<
+/S /URI /Type /Action /URI (https://play.google.com/store/apps/details?id=uk.cagroup.nourish)
+>> /Border [ 0 0 0 ] /Rect [ 54 657.8898 371.02 671.8898 ] /Subtype /Link /Type /Annot
+>>
 endobj
 6 0 obj
-<< /Type /Annot /Subtype /Link /Rect [72 647 419 662] /Border [0 0 0] /A << /Type /Action /S /URI /URI (https://waysidelabs.co.uk/nourish-weekly/free-meal-plan/) >> >>
+<<
+/Annots [ 4 0 R 5 0 R ] /Contents 10 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 9 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+7 0 obj
+<<
+/PageMode /UseNone /Pages 9 0 R /Type /Catalog
+>>
+endobj
+8 0 obj
+<<
+/Author (anonymous) /CreationDate (D:20261124182125+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20261124182125+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (unspecified) /Title (Nourish Weekly) /Trapped /False
+>>
+endobj
+9 0 obj
+<<
+/Count 1 /Kids [ 6 0 R ] /Type /Pages
+>>
+endobj
+10 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 401
+>>
+stream
+GasJM;+ne\!/08(/+-8gV+]R>m6F'*I2O4GfQ4K3D-bk[UdP"ID<'7uF@mYd8%AHa6F#_bp%PTjSiD<<$6"Nb6":O[YOThL?4T>if/"%GFF(5p`^j3$dPOV5/)7e*UFfc&ND^#;h1C-.hjqHX1WE`uFRe?Zkoce/auRrUg=3[=."jrl.."'6W0GYB[&D+8XKa-YSinGCYUm=c!'Pn4IGA>]i1i/16.?ON`oL=^?&NSX8g\sN&ge`@#b.GZ;dVSs1*B4Z!u>b.\5a)rVK&EHZm%S1"o3=<K)17?roND,6i6]+^/d-?,thrG=V@QI@ebEiQ4j\?F%:9.e3ga>^*a;aC.5,X6RhJb#I5#R291HAn4)XM+#05Dn,I#4]jPYEk=V_X(0``'`9\F0dCD7~>endstream
 endobj
 xref
-0 7
+0 11
 0000000000 65535 f 
-0000000009 00000 n 
-0000000058 00000 n 
-0000000115 00000 n 
-0000000257 00000 n 
-0000000668 00000 n 
-0000000738 00000 n 
+0000000061 00000 n 
+0000000102 00000 n 
+0000000209 00000 n 
+0000000321 00000 n 
+0000000536 00000 n 
+0000000744 00000 n 
+0000000972 00000 n 
+0000001040 00000 n 
+0000001307 00000 n 
+0000001366 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<<
+/ID 
+[<d14c36052dcb92a9d2e6c8a82076d8db><d14c36052dcb92a9d2e6c8a82076d8db>]
+% ReportLab generated PDF document -- digest (opensource)
+
+/Info 8 0 R
+/Root 7 0 R
+/Size 11
+>>
 startxref
-921
+1858
 %%EOF
