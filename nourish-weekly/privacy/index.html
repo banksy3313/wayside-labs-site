@@ -107,6 +107,7 @@ layout: null
     <section>
       <h2>Data stored on your device</h2>
       <p>The details you enter, and the plans the app builds from them, are saved on the phone or tablet in the app’s own storage. That record is used to calculate calorie targets, build the two-week meal plan, keep your shopping list and show your progress. It is not uploaded with your account.</p>
+      <p>Your details (such as age, height, weight and goal) are stored on your phone until you create an account. You can clear them from the first-day screen.</p>
       <p>That on-device record can include:</p>
       <ul>
         <li>a profile name, which is optional, plus body weight, height, age and a sex value used in the calorie estimate;</li>
@@ -129,9 +130,10 @@ layout: null
       <h3>Subscriptions</h3>
       <p>The Apple App Store or Google Play handles the subscription and any free trial, and takes the payment. Wayside Labs does not receive your card or bank details. Apple and Google keep their own record of the transaction under their policies.</p>
       <p>The app uses RevenueCat, Inc. to check whether the subscription is active. RevenueCat receives your account ID and the email address you signed in with. The app does not send RevenueCat your name, weight, age, meals or diary.</p>
+      <p>Before you sign in, the app sets a few anonymous timestamps on the anonymous RevenueCat customer ID, to measure the sign-up steps: onboarding started, plan viewed, paywall viewed and sign-in completed. These contain no profile or meal plan data.</p>
       <p>When the subscription changes, RevenueCat notifies our service. To time the emails below, we store the account ID, the email address, the store transaction reference, the product, the price and currency, and the relevant dates.</p>
       <h3>Service emails about the subscription</h3>
-      <p>We email the address on your account about the subscription. These are service messages about the subscription, not marketing. They are separate from the website waitlist. Resend sends them. The lawful basis is contract. The messages are:</p>
+      <p>We email the address on your account about the subscription. These are service messages about the subscription, not marketing. They are separate from the email collected on the free meal plan page. Resend sends them. The lawful basis is contract. The messages are:</p>
       <ul>
         <li>a reminder 3 days before a free trial ends;</li>
         <li>on a yearly plan, a reminder 30 days before renewal, and again 7 days before;</li>
@@ -150,7 +152,7 @@ layout: null
       <ul>
         <li>Supabase, which hosts the account and the records used to send the subscription emails. Supabase is our processor for that.</li>
         <li>Resend, which sends the sign-in code and the subscription service emails. Resend is our email processor.</li>
-        <li>RevenueCat, Inc., which checks whether the subscription is active. We give RevenueCat the account ID and the sign-in email.</li>
+        <li>RevenueCat, Inc., which checks whether the subscription is active. Before sign-in we set the anonymous timestamps described above on the anonymous RevenueCat customer ID. After sign-in we give RevenueCat the account ID and the sign-in email.</li>
         <li>Apple (App Store) or Google (Google Play), which take payment and restore purchases.</li>
         <li>Whatever app you choose in the share sheet, and only if you send the diary.</li>
       </ul>
